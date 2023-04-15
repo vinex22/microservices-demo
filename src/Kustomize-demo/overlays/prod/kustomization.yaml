@@ -1,13 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: prod
-resources:
-  - ../nginx/deployment.yaml
-  - ../nginx/service.yaml
-patches:
-  - target:
-      kind: Deployment
-      name: nginx-deployment
-    patch: |-
-      spec:
-        replicas: 3
+resources: 
+- ../../base/
+
+replicas:
+  - name: nginx-deployment
+    count: 3
+
+  
